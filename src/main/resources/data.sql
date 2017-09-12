@@ -1,3 +1,4 @@
+/*
 insert into customer (fullname, address, age) values
 ('David Abbott', '733 Oxford Road Libertyville, IL 60048', 34),
 ('Graham Anderson', '888 Argyle Ave. Sykesville, MD 21784', 45),
@@ -65,3 +66,4 @@ insert into bank_account (customer_id, money) values
 (42, 22473.55), (42, 567.44), (43, 44.76), (43, 557.55), (44, 6589.56), (45, 567.565),
 (45, 5588.53), (46, 755.56), (46, 89.65), (46, 559.54), (47, 67.56), (48, 579.67), (49, 679.54),
 (50, 679.65), (50, 66.44);
+*/

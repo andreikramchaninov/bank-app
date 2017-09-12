@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Customer accounts</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+<h1>Fuck! Ass!</h1>
+
+<table>
+  <tr>
+    <td>Id</td>
+    <td>Owner</td>
+    <td>Financial statement</td>
+  </tr>
+  <tr th:each="account : ${accountsList}">
+    <td th:text="${account.id}">Id</td>
+    <td th:text="${account.Customer.fullname}">Owner</td>
+    <td th:text="${account.money}">Financial statement</td>
+  </tr>
+</table>
+
+</body>
+</html>
