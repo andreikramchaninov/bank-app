@@ -1,5 +1,6 @@
 package bankapp.dao;
 
+import bankapp.entity.BankAccount;
 import bankapp.entity.BankOperation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,8 +14,8 @@ public interface BankOperationRepository extends JpaRepository<BankOperation, In
 
     BankOperation saveAndFlush(BankOperation bankOperation);
 
-    List<BankOperation> findByAccountId(int id);
+    List<BankOperation> findByBankAccount(BankAccount bankAccount);
 
-    List<BankOperation> findByAccountIdAndOperationDate(int id, Timestamp timestamp);
+    List<BankOperation> findByBankAccountAndOperationDate(BankAccount bankAccount, Timestamp timestamp);
 
 }

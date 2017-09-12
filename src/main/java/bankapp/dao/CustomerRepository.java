@@ -12,6 +12,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
     Customer saveAndFlush(Customer customer);
 
-    Customer findByCustomerId(int id);
+    Customer findById(int id);
 
 }

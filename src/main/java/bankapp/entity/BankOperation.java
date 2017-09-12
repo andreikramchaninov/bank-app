@@ -4,9 +4,12 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,8 +25,9 @@ public class BankOperation {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "account_id")
-    private int accountId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id")
+    private BankAccount bankAccount;
 
     @Column(name = "op_type")
     private byte operationType;
@@ -34,9 +38,12 @@ public class BankOperation {
     @Column(name = "op_date")
     private Timestamp operationDate;
 
-    public BankOperation(int accountId, byte operationType, BigDecimal money,
+    public BankOperation() {
+    }
+
+    public BankOperation(BankAccount bankAccount, byte operationType, BigDecimal money,
             Timestamp operationDate) {
-        this.accountId = accountId;
+        this.bankAccount = bankAccount;
         this.operationType = operationType;
         this.money = money;
         this.operationDate = operationDate;
@@ -50,12 +57,12 @@ public class BankOperation {
         this.id = id;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public BankAccount getBankAccount() {
+        return bankAccount;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
 
     public byte getOperationType() {
@@ -86,7 +93,7 @@ public class BankOperation {
     public String toString() {
         return "BankOperation{" +
                 "id=" + id +
-                ", accountId=" + accountId +
+                ", bankAccount=" + bankAccount +
                 ", operationType=" + operationType +
                 ", money=" + money +
                 ", operationDate=" + operationDate +

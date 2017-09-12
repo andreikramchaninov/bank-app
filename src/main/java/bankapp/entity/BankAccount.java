@@ -3,9 +3,12 @@ package bankapp.entity;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,14 +24,18 @@ public class BankAccount {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "customer_id")
-    private int customerId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     @Column(name = "money")
     private BigDecimal money;
 
-    public BankAccount(int customerId, BigDecimal money) {
-        this.customerId = customerId;
+    public BankAccount() {
+    }
+
+    public BankAccount(Customer customer, BigDecimal money) {
+        this.customer = customer;
         this.money = money;
     }
 
@@ -40,12 +47,12 @@ public class BankAccount {
         this.id = id;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public BigDecimal getMoney() {
@@ -60,7 +67,7 @@ public class BankAccount {
     public String toString() {
         return "BankAccount{" +
                 "id=" + id +
-                ", customerId=" + customerId +
+                ", customer=" + customer +
                 ", money=" + money +
                 '}';
     }

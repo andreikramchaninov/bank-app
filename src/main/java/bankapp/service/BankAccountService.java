@@ -1,6 +1,7 @@
 package bankapp.service;
 
 import bankapp.entity.BankAccount;
+import bankapp.entity.Customer;
 
 import java.util.List;
 
@@ -11,6 +12,6 @@ public interface BankAccountService {
 
     BankAccount saveAndFlush(BankAccount bankAccount);
 
-    List<BankAccount> findByCustomerId(int id);
+    List<BankAccount> findByCustomer(Customer customer);
 
 }

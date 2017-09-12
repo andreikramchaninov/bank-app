@@ -1,6 +1,7 @@
 package bankapp.dao;
 
 import bankapp.entity.BankAccount;
+import bankapp.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -12,6 +13,6 @@ public interface BankAccountRepository extends JpaRepository<BankAccount, Intege
 
     BankAccount saveAndFlush(BankAccount bankAccount);
 
-    List<BankAccount> findByCustomerId(int id);
+    List<BankAccount> findByCustomer(Customer customer);
 
 }

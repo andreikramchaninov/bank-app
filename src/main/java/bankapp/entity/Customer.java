@@ -29,6 +29,9 @@ public class Customer {
     @Column(name = "age")
     private int age;
 
+    public Customer() {
+    }
+
     public Customer(String fullname, String address, int age) {
         this.fullname = fullname;
         this.address = address;
