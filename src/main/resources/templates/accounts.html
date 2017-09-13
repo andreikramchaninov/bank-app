@@ -9,22 +9,44 @@
 
 <h1 th:text="${customer.fullname}" align="center"></h1>
 
-<table width="800" align="center" border-style="solid" border="2">
+<table width="1200" align="center" border-style="solid" border="2">
   <tr>
     <td>Id</td>
     <td>Owner</td>
     <td>Financial statement</td>
+    <td>Deposit</td>
+    <td>Debit</td>
+    <td>Transfer</td>
   </tr>
   <tr th:each="account : ${accountsList}">
     <td th:text="${account.id}">Id</td>
     <td th:text="${account.Customer.fullname}">Owner</td>
     <td th:text="${account.money}">Financial statement</td>
+    <td>
+      <form th:action="@{'/account/deposit/' + ${account.id}}" method="post">
+            <input type="text" name="money" placeholder="Enter sum"/>
+            <button type="submit">Deposit</button>
+      </form>
+    </td>
+    <td>
+      <form th:action="@{'/account/withdraw/' + ${account.id}}" method="post">
+            <input type="text" name="money" placeholder="Enter sum"/>
+            <button type="submit">Withdraw</button>
+      </form>
+    </td>
+    <td>
+      <form th:action="@{'/account/transfer/' + ${account.id}}" method="post">
+            <input type="text" name="money" placeholder="Enter sum"/>
+            <input type="text" name="recipient" placeholder="Enter account"/>
+            <button type="submit">Transfer</button>
+      </form>
+    </td>
   </tr>
 </table>
 
 <h1 align="center">Add a new account</h1>
 
-<div align="center">
+<div align="center" >
   <form action="/account" method="post">
     <input type="hidden" name="id" th:value="${customer.id}"/>
     <input type="text" name="money"/>

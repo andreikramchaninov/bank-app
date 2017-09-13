@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,14 +33,14 @@ public class CustomerController {
     @Autowired
     private CustomerModel customerModel;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/customers", method = RequestMethod.GET)
     public String getCustomersPage(ModelMap modelMap) {
         List<Customer> customersList= customerService.findAll();
         modelMap.addAttribute("customersList", customersList);
         return "customers";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/customer", method = RequestMethod.POST)
     public String postNewCustomer(@PathParam(value = "fullname") String fullname,
             @PathParam(value = "address") String address,
             @PathParam(value = "age") int age, ModelMap modelMap) {
@@ -49,8 +50,8 @@ public class CustomerController {
         return "customers";
     }
 
-    @RequestMapping(value = "/accounts", method = RequestMethod.GET)
-    public String postCustomerAccountsRequest(@RequestParam(value = "id") int id,
+    @RequestMapping(value = "/accounts/{id}", method = RequestMethod.GET)
+    public String postCustomerAccountsRequest(@PathVariable(value = "id") int id,
             ModelMap modelMap, Model model) {
         Customer customer = customerService.findById(id);
         List<BankAccount> accountsList = bankAccountService.findByCustomer(customer);

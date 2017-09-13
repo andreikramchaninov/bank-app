@@ -15,4 +15,6 @@ public interface BankAccountRepository extends JpaRepository<BankAccount, Intege
 
     List<BankAccount> findByCustomer(Customer customer);
 
+    BankAccount findById(int id);
+
 }

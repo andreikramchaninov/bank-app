@@ -14,4 +14,6 @@ public interface BankAccountService {
 
     List<BankAccount> findByCustomer(Customer customer);
 
+    BankAccount findById(int id);
+
 }

@@ -27,4 +27,9 @@ public class BankAccountServiceImpl implements BankAccountService {
     public List<BankAccount> findByCustomer(Customer customer) {
         return bankAccountRepository.findByCustomer(customer);
     }
+
+    @Override
+    public BankAccount findById(int id) {
+        return bankAccountRepository.findById(id);
+    }
 }
