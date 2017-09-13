@@ -9,11 +9,11 @@ import java.math.BigDecimal;
  */
 public class BankOperationView {
 
-    private int id;
-    private int accountId;
-    private String type;
-    private BigDecimal money;
-    private String date;
+    public int id;
+    public int accountId;
+    public String type;
+    public BigDecimal money;
+    public String date;
     private BankOperation bankOperation;
 
     public BankOperationView(int id, BankOperation bankOperation) {
