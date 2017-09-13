@@ -17,4 +17,6 @@ public interface BankOperationService {
 
     List<BankOperation> findByBankAccountAndOperationDate(BankAccount bankAccount, Timestamp timestamp);
 
+    List<BankOperation> findAll();
+
 }

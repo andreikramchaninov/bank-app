@@ -35,9 +35,9 @@
       </form>
     </td>
     <td>
-      <form th:action="@{'/account/transfer/' + ${account.id}}" method="post">
+      <form th:action="@{'/account/transfer/' + ${account.id} }" method="post">
             <input type="text" name="money" placeholder="Enter sum"/>
-            <input type="text" name="recipient" placeholder="Enter account"/>
+            <input type="text" name="recipient" placeholder="Enter account" th:value="${recipient}"/>
             <button type="submit">Transfer</button>
       </form>
     </td>

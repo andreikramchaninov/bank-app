@@ -1,9 +1,7 @@
 package bankapp.controller;
 
 import bankapp.entity.BankAccount;
-import bankapp.entity.BankOperation;
 import bankapp.entity.Customer;
-import bankapp.model.AccountControllerModel;
 import bankapp.model.BankAccountModel;
 import bankapp.service.BankAccountService;
 import bankapp.service.CustomerService;
@@ -14,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -35,9 +32,6 @@ public class BankAccountController {
 
     @Autowired
     private CustomerService customerService;
-
-    @Autowired
-    private AccountControllerModel accountControllerModel;
 
     @RequestMapping(value = "/account", method = RequestMethod.POST)
     public String postNewAccount(@PathParam(value = "id") int id,

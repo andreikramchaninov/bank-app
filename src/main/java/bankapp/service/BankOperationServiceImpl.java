@@ -33,4 +33,9 @@ public class BankOperationServiceImpl implements BankOperationService {
     public List<BankOperation> findByBankAccountAndOperationDate(BankAccount bankAccount, Timestamp timestamp) {
         return bankOperationRepository.findByBankAccountAndOperationDate(bankAccount, timestamp);
     }
+
+    @Override
+    public List<BankOperation> findAll() {
+        return bankOperationRepository.findAll();
+    }
 }

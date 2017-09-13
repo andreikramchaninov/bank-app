@@ -7,7 +7,25 @@
 </head>
 <body>
 
+<h1 align="center">Operations List</h1>
 
+<table width="1000" align="center" border-style="solid" border="2">
+  <tr>
+    <td width="20%">Id</td>
+    <td width="20%">Account</td>
+    <td width="20%">Operation type</td>
+    <td width="20%">Money</td>
+    <td width="20%">Operation Date</td>
+  </tr>
+  <tr th:each="operation : ${opsList}">
+    <td width="20%" th:text="${operation.id}">Id</td>
+    <td width="20%" th:text="${operation.accountId}"></td>
+    <td width="20%" th:text="${operation.type}">Address</td>
+    <td width="20%" th:text="${operation.money}"></td>
+    <td width="20%" th:text="${operation.date}"></td>
+  </tr>
+
+</table>
 
 </body>
 </html>
