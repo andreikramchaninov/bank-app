@@ -7,19 +7,22 @@
 
 <body>
 
-  <table>
+  <h1 align="center">Customer List</h1>
+
+  <table width="1200" align="center" border-style="solid" border="2">
     <tr>
-      <td>Id</td>
-      <td>Name</td>
-      <td>Address</td>
-      <td>Age</td>
+      <td width="10%">Id</td>
+      <td width="25%">Name</td>
+      <td width="35%">Address</td>
+      <td width="10%">Age</td>
+      <td align="center" width="20%">Accounts</td>
     </tr>
     <tr th:each="customer : ${customersList}">
-      <td th:text="${customer.id}">Id</td>
-      <td th:text="${customer.fullname}">Name</td>
-      <td th:text="${customer.address}">Address</td>
-      <td th:text="${customer.age}">Age</td>
-      <td>
+      <td width="20%" th:text="${customer.id}">Id</td>
+      <td width="20%" th:text="${customer.fullname}">Name</td>
+      <td width="20%" th:text="${customer.address}">Address</td>
+      <td width="20%" th:text="${customer.age}">Age</td>
+      <td width="20%">
         <form th:action="@{/accounts}" method="get">
           <input type="hidden" name="id" th:value="${customer.id}"/>
           <button type="submit">Show accounts</button>
@@ -29,7 +32,16 @@
 
   </table>
 
+  <h1 align="center">Add a new customer</h1>
 
+  <div align="center">
+    <form action="" method="post">
+      <input type="text" name="fullname"/>
+      <input type="text" name="address"/>
+      <input type="text" name="age"/>
+      <button type="submit">Add customer</button>
+    </form>
+  </div>
 
 
 </body>
