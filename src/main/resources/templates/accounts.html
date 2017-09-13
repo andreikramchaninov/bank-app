@@ -7,9 +7,9 @@
 
 <body>
 
-<h1>Fuck! Ass!</h1>
+<h1 th:text="${customer.fullname}" align="center"></h1>
 
-<table>
+<table width="800" align="center" border-style="solid" border="2">
   <tr>
     <td>Id</td>
     <td>Owner</td>
@@ -21,6 +21,16 @@
     <td th:text="${account.money}">Financial statement</td>
   </tr>
 </table>
+
+<h1 align="center">Add a new account</h1>
+
+<div align="center">
+  <form action="/account" method="post">
+    <input type="hidden" name="id" th:value="${customer.id}"/>
+    <input type="text" name="money"/>
+    <button type="submit">Add account</button>
+  </form>
+</div>
 
 </body>
 </html>

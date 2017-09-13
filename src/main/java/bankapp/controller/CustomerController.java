@@ -7,6 +7,7 @@ import bankapp.service.BankAccountService;
 import bankapp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,9 +43,6 @@ public class CustomerController {
     public String postNewCustomer(@PathParam(value = "fullname") String fullname,
             @PathParam(value = "address") String address,
             @PathParam(value = "age") int age, ModelMap modelMap) {
-        System.out.println(fullname);
-        System.out.println(address);
-        System.out.println(age);
         customerModel.addNewCustomer(fullname, address, age);
         List<Customer> customersList= customerService.findAll();
         modelMap.addAttribute("customersList", customersList);
@@ -53,9 +51,10 @@ public class CustomerController {
 
     @RequestMapping(value = "/accounts", method = RequestMethod.GET)
     public String postCustomerAccountsRequest(@RequestParam(value = "id") int id,
-            ModelMap modelMap) {
+            ModelMap modelMap, Model model) {
         Customer customer = customerService.findById(id);
         List<BankAccount> accountsList = bankAccountService.findByCustomer(customer);
+        model.addAttribute("customer", customer);
         modelMap.addAttribute("accountsList", accountsList);
         return "accounts";
     }
