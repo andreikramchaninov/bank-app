@@ -24,18 +24,93 @@
 
 <h1 align="center">Operations List</h1>
 
+<div align="center" width="1000">
+  <h3 align="left">Filter</h3>
+  <form action="/operations/bycustomer" method="post">
+    <input type="text" name="fullname"/>
+    <button type="submit">Run name filter</button>
+  </form>
+  <form action="/operations/bydate" method="post">
+    <label>Start date</label>
+    <input width="50" type="text" name="startyear"/>
+    <input width="50" type="text" name="startmonth"/>
+    <input width="50" type="text" name="startday"/>
+    <label>Finish date</label>
+    <input width="50" type="text" name="finishyear"/>
+    <input width="50" type="text" name="finishmonth"/>
+    <input width="50" type="text" name="finishday"/>
+    <button type="submit">Run date filter</button>
+  </form>
+</div>
+
+<!--<div align="center">
+  <form align="left" action="/operations/filter" method="post">
+    <label>Select customer</label>
+    <select>
+      <option>none</option>
+      <option th:each="customer : ${customerList}" th:text="${customer.fullname}">
+        <input type="hidden" name="id" th:value="${customer.id}"/>
+      </option>
+    </select>
+    <label>Select start date</label>
+    <select>
+      <option>none</option>
+      <option th:each="operation : ${operations}" th:text="${operation.operationDate}"></option>>
+    </select>
+    <label>Select finish date</label>
+    <select>
+      <option>none</option>
+      <option th:each="operation : ${operations}" th:text="${operation.operationDate}"></option>>
+    </select>
+    <button type="submit">Search</button>
+  </form>
+</div>-->
+
 <table width="1000" align="center" border-style="solid" border="2">
   <tr>
-    <td width="20%">Id</td>
-    <td width="20%">Account</td>
+    <td width="10%">Id</td>
+    <td width="10%">Account</td>
+    <td width="20%">Customer</td>
     <td width="20%">Operation type</td>
     <td width="20%">Money</td>
     <td width="20%">Operation Date</td>
   </tr>
+  <!--<tr>
+    <td width="20%">
+      <form th:action="@{/filter}">
+        <button type="submit">Run filter</button>
+      </form>
+    </td>
+    <td width="20%">
+      <select>
+        <option>none</option>
+        <option th:each="customer : ${customerList}" th:text="${customer.fullname}"></option>>
+      </select>
+    </td>
+    <td width="20%"></td>
+    <td width="20%"></td>
+    <td width="20%">
+      <div>
+        <label>Select start date</label>
+        <select>
+          <option>none</option>
+          <option th:each="operation : ${operations}" th:text="${operation.operationDate}"></option>>
+        </select>
+      </div>
+      <div>
+        <label>Select finish date</label>
+        <select>
+          <option>none</option>
+          <option th:each="operation : ${operations}" th:text="${operation.operationDate}"></option>>
+        </select>
+      </div>
+    </td>
+  </tr>-->
   <tr th:each="operation : ${opsList}">
-    <td width="20%" th:text="${operation.id}">Id</td>
-    <td width="20%" th:text="${operation.accountId}"></td>
-    <td width="20%" th:text="${operation.type}">Address</td>
+    <td width="10%" th:text="${operation.id}">Id</td>
+    <td width="10%" th:text="${operation.accountId}"></td>
+    <td width="20%" th:text="${operation.customer}"></td>
+    <td width="20%" th:text="${operation.type}"></td>
     <td width="20%" th:text="${operation.money}"></td>
     <td width="20%" th:text="${operation.date}"></td>
   </tr>
