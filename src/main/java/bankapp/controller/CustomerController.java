@@ -44,6 +44,9 @@ public class CustomerController {
     public String postNewCustomer(@PathParam(value = "fullname") String fullname,
             @PathParam(value = "address") String address,
             @PathParam(value = "age") int age, ModelMap modelMap) {
+        System.out.println(fullname);
+        System.out.println(address);
+        System.out.println(age);
         customerModel.addNewCustomer(fullname, address, age);
         List<Customer> customersList= customerService.findAll();
         modelMap.addAttribute("customersList", customersList);
