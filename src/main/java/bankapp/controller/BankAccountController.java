@@ -12,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -71,8 +72,8 @@ public class BankAccountController {
 
     @RequestMapping(value = "/account/transfer/{account}", method = RequestMethod.POST)
     public String transferToAccount(@PathVariable(value = "account") int accountId,
-            @PathParam(value = "money") BigDecimal money,
-            @PathParam(value = "recipient") int recipientId, ModelMap modelMap,
+            @RequestParam(value = "money") BigDecimal money,
+            @RequestParam(value = "recipient") int recipientId, ModelMap modelMap,
             Model model) {
         System.out.println(money);
         System.out.println(recipientId);
