@@ -31,7 +31,7 @@
       <td>
         <form action="/operations/bycustomer" method="post">
           <label>Customer</label>
-          <input type="text" name="fullname"/>
+          <input type="text" name="fullname" placeholder="Enter customer name"/>
           <button type="submit">Run customer filter</button>
         </form>
       </td>
@@ -40,13 +40,13 @@
       <td>
         <form action="/operations/bydate" method="post">
           <label>Start date</label>
-          <input type="text" name="startyear"/>
-          <input type="text" name="startmonth"/>
-          <input type="text" name="startday"/>
+          <input type="text" name="startyear" placeholder="yyyy"/>
+          <input type="text" name="startmonth" placeholder="mm"/>
+          <input type="text" name="startday" placeholder="dd"/>
           <label>Finish date</label>
-          <input type="text" name="finishyear"/>
-          <input type="text" name="finishmonth"/>
-          <input type="text" name="finishday"/>
+          <input type="text" name="finishyear" placeholder="yyyy"/>
+          <input type="text" name="finishmonth" placeholder="mm"/>
+          <input type="text" name="finishday" placeholder="dd"/>
           <button type="submit">Run date filter</button>
         </form>
       </td>

@@ -60,11 +60,19 @@ public class BankOperationController {
     public String filterByCustomer(@PathParam(value = "fullname") String fullname,
             ModelMap modelMap, Model model) {
         Customer customer = customerService.findByFullname(fullname);
-        List<BankAccount> accountList = bankAccountService.findByCustomer(customer);
         List<BankOperation> opsList = new ArrayList<>();
-        for(BankAccount bankAccount : accountList) {
-            List<BankOperation> operationsByAccount = bankOperationService.findByBankAccount(bankAccount);
-            opsList.addAll(operationsByAccount);
+        if(customer != null) {
+            List<BankAccount> accountList = bankAccountService.findByCustomer(customer);
+            opsList = new ArrayList<>();
+            for(BankAccount bankAccount : accountList) {
+                List<BankOperation> operationsByAccount = bankOperationService.findByBankAccount(bankAccount);
+                opsList.addAll(operationsByAccount);
+            }
+            model.addAttribute("message", "Filtered by customer: " + customer.getFullname());
+        } else {
+            opsList= bankOperationService.findAll();
+            model.addAttribute("message", "Customer not selected "
+                    + "or doesn't exist");
         }
         List<BankOperationView> opsView= new ArrayList<>();
         int i = 1;
@@ -72,7 +80,6 @@ public class BankOperationController {
             opsView.add(new BankOperationView(i, b));
             i++;
         }
-        model.addAttribute("message", "Filtered by customer: " + customer.getFullname());
         modelMap.addAttribute("operations", opsList);
         modelMap.addAttribute("customerList", customerService.findAll());
         modelMap.addAttribute("opsList", opsView);
