@@ -24,6 +24,10 @@
 
 <h1 th:text="${customer.fullname}" align="center"></h1>
 
+<div align="center">
+  <label th:text="${message}"></label>
+</div>
+
 <table width="1200" align="center" border-style="solid" border="2">
   <tr>
     <td>Id</td>
@@ -60,6 +64,10 @@
 </table>
 
 <h1 align="center">Add a new account</h1>
+
+<div align="center">
+  <label th:text="${accMessage}"></label>
+</div>
 
 <div align="center" >
   <form action="/account" method="post">

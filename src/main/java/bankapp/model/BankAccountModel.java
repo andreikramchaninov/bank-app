@@ -28,7 +28,14 @@ public class BankAccountModel {
         BankAccount bankAccount = new BankAccount();
         bankAccount.setCustomer(customer);
         bankAccount.setMoney(money);
+        BankOperation bankOperation = new BankOperation();
+        bankOperation.setBankAccount(bankAccount);
+        bankOperation.setOperationType((byte) 1);
+        bankOperation.setMoney(money);
+        Timestamp timestamp = new Timestamp(new Date().getTime());
+        bankOperation.setOperationDate(timestamp);
         bankAccountService.saveAndFlush(bankAccount);
+        bankOperationService.saveAndFlush(bankOperation);
     }
 
     public void depositMoney(int id, BigDecimal money) {

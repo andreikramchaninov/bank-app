@@ -39,7 +39,11 @@ public class BankAccountController {
             @PathParam(value = "money") BigDecimal money, ModelMap modelMap,
             Model model) {
         Customer customer = customerService.findById(id);
-        bankAccountModel.addNewAccount(customer, money);
+        if (money != null) {
+            bankAccountModel.addNewAccount(customer, money);
+        } else {
+            model.addAttribute("accMessage", "Sum not entered");
+        }
         List<BankAccount> accountsList = bankAccountService.findByCustomer(customer);
         model.addAttribute("customer", customer);
         modelMap.addAttribute("accountsList", accountsList);
@@ -50,7 +54,11 @@ public class BankAccountController {
     public String depositMoney(@PathVariable(value = "account") int accountId,
             @PathParam(value = "money") BigDecimal money, ModelMap modelMap,
             Model model) {
-        bankAccountModel.depositMoney(accountId, money);
+        if (money != null) {
+            bankAccountModel.depositMoney(accountId, money);
+        } else {
+            model.addAttribute("message", "Sum not entered");
+        }
         Customer customer = bankAccountService.findById(accountId).getCustomer();
         List<BankAccount> accountsList = bankAccountService.findByCustomer(customer);
         model.addAttribute("customer", customer);
@@ -62,7 +70,11 @@ public class BankAccountController {
     public String withdrawMoney(@PathVariable(value = "account") int accountId,
             @PathParam(value = "money") BigDecimal money, ModelMap modelMap,
             Model model) {
-        bankAccountModel.withdrawMoney(accountId, money);
+        if (money != null) {
+            bankAccountModel.withdrawMoney(accountId, money);
+        } else {
+            model.addAttribute("message", "Sum not entered");
+        }
         Customer customer = bankAccountService.findById(accountId).getCustomer();
         List<BankAccount> accountsList = bankAccountService.findByCustomer(customer);
         model.addAttribute("customer", customer);
@@ -73,11 +85,15 @@ public class BankAccountController {
     @RequestMapping(value = "/account/transfer/{account}", method = RequestMethod.POST)
     public String transferToAccount(@PathVariable(value = "account") int accountId,
             @RequestParam(value = "money") BigDecimal money,
-            @RequestParam(value = "recipient") int recipientId, ModelMap modelMap,
+            @RequestParam(value = "recipient") String recipient, ModelMap modelMap,
             Model model) {
-        System.out.println(money);
-        System.out.println(recipientId);
-        bankAccountModel.transferMoney(accountId, recipientId, money);
+        if (money != null && recipient != null) {
+            int recipientId = Integer.valueOf(recipient);
+            bankAccountModel.transferMoney(accountId, recipientId, money);
+        } else {
+            model.addAttribute("message", "Sum or recipient "
+                    + "account not entered");
+        }
         Customer customer = bankAccountService.findById(accountId).getCustomer();
         List<BankAccount> accountsList = bankAccountService.findByCustomer(customer);
         model.addAttribute("customer", customer);
