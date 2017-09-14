@@ -1,4 +1,4 @@
-/*insert into customer (fullname, address, age) values
+insert into customer (fullname, address, age) values
 ('David Abbott', '733 Oxford Road Libertyville, IL 60048', 34),
 ('Graham Anderson', '888 Argyle Ave. Libertyville, IL 60048', 45),
 ('Christina Arrowsmith', '12 South Longbranch Ave. Libertyville, IL 60048', 23),
@@ -97,4 +97,4 @@ insert into bank_operation (account_id, op_type, money, op_date) values
 (56, 1, 1500.00, '2017-05-21 11:59:07'),
 (47, 1, 4100.00, '2017-04-15 11:59:07'),
 (43, 0, 1050.00, '2017-04-13 11:59:07'),
-(1, 1, 1050.00, '2017-09-13 11:59:07');*/
+(1, 1, 1050.00, '2017-09-13 11:59:07');
