@@ -38,4 +38,14 @@ public class BankOperationServiceImpl implements BankOperationService {
     public List<BankOperation> findAll() {
         return bankOperationRepository.findAll();
     }
+
+    @Override
+    public List<BankOperation> findByOperationDateGreaterThan(Timestamp timestamp) {
+        return bankOperationRepository.findByOperationDateGreaterThan(timestamp);
+    }
+
+    @Override
+    public List<BankOperation> findByOperationDateLessThan(Timestamp timestamp) {
+        return bankOperationRepository.findByOperationDateLessThan(timestamp);
+    }
 }

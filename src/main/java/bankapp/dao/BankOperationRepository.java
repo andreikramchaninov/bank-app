@@ -18,4 +18,8 @@ public interface BankOperationRepository extends JpaRepository<BankOperation, In
 
     List<BankOperation> findByBankAccountAndOperationDate(BankAccount bankAccount, Timestamp timestamp);
 
+    List<BankOperation> findByOperationDateGreaterThan(Timestamp timestamp);
+
+    List<BankOperation> findByOperationDateLessThan(Timestamp timestamp);
+
 }

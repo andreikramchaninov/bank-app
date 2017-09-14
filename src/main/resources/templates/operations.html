@@ -24,47 +24,48 @@
 
 <h1 align="center">Operations List</h1>
 
-<div align="center" width="1000">
-  <h3 align="left">Filter</h3>
-  <form action="/operations/bycustomer" method="post">
-    <input type="text" name="fullname"/>
-    <button type="submit">Run name filter</button>
-  </form>
-  <form action="/operations/bydate" method="post">
-    <label>Start date</label>
-    <input width="50" type="text" name="startyear"/>
-    <input width="50" type="text" name="startmonth"/>
-    <input width="50" type="text" name="startday"/>
-    <label>Finish date</label>
-    <input width="50" type="text" name="finishyear"/>
-    <input width="50" type="text" name="finishmonth"/>
-    <input width="50" type="text" name="finishday"/>
-    <button type="submit">Run date filter</button>
-  </form>
+<div align="center" width="800">
+  <h3 align="center">Filter</h3>
+  <table>
+    <tr>
+      <td>
+        <form action="/operations/bycustomer" method="post">
+          <label>Customer</label>
+          <input type="text" name="fullname"/>
+          <button type="submit">Run customer filter</button>
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <form action="/operations/bydate" method="post">
+          <label>Start date</label>
+          <input type="text" name="startyear"/>
+          <input type="text" name="startmonth"/>
+          <input type="text" name="startday"/>
+          <label>Finish date</label>
+          <input type="text" name="finishyear"/>
+          <input type="text" name="finishmonth"/>
+          <input type="text" name="finishday"/>
+          <button type="submit">Run date filter</button>
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <form action="/operations" method="get">
+          <button type="submit">Clear filter</button>
+        </form>
+      </td>
+    </tr>
+  </table>
 </div>
 
-<!--<div align="center">
-  <form align="left" action="/operations/filter" method="post">
-    <label>Select customer</label>
-    <select>
-      <option>none</option>
-      <option th:each="customer : ${customerList}" th:text="${customer.fullname}">
-        <input type="hidden" name="id" th:value="${customer.id}"/>
-      </option>
-    </select>
-    <label>Select start date</label>
-    <select>
-      <option>none</option>
-      <option th:each="operation : ${operations}" th:text="${operation.operationDate}"></option>>
-    </select>
-    <label>Select finish date</label>
-    <select>
-      <option>none</option>
-      <option th:each="operation : ${operations}" th:text="${operation.operationDate}"></option>>
-    </select>
-    <button type="submit">Search</button>
-  </form>
-</div>-->
+<div align="center">
+  <label th:text="${message}"></label>
+</div>
+
+<h3 align="center">Result</h3>
 
 <table width="1000" align="center" border-style="solid" border="2">
   <tr>
@@ -75,37 +76,7 @@
     <td width="20%">Money</td>
     <td width="20%">Operation Date</td>
   </tr>
-  <!--<tr>
-    <td width="20%">
-      <form th:action="@{/filter}">
-        <button type="submit">Run filter</button>
-      </form>
-    </td>
-    <td width="20%">
-      <select>
-        <option>none</option>
-        <option th:each="customer : ${customerList}" th:text="${customer.fullname}"></option>>
-      </select>
-    </td>
-    <td width="20%"></td>
-    <td width="20%"></td>
-    <td width="20%">
-      <div>
-        <label>Select start date</label>
-        <select>
-          <option>none</option>
-          <option th:each="operation : ${operations}" th:text="${operation.operationDate}"></option>>
-        </select>
-      </div>
-      <div>
-        <label>Select finish date</label>
-        <select>
-          <option>none</option>
-          <option th:each="operation : ${operations}" th:text="${operation.operationDate}"></option>>
-        </select>
-      </div>
-    </td>
-  </tr>-->
+
   <tr th:each="operation : ${opsList}">
     <td width="10%" th:text="${operation.id}">Id</td>
     <td width="10%" th:text="${operation.accountId}"></td>

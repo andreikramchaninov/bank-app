@@ -19,4 +19,8 @@ public interface BankOperationService {
 
     List<BankOperation> findAll();
 
+    List<BankOperation> findByOperationDateGreaterThan(Timestamp timestamp);
+
+    List<BankOperation> findByOperationDateLessThan(Timestamp timestamp);
+
 }
